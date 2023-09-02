@@ -20,7 +20,7 @@ class dis6502:
             self.have_symbols = True
 
             self.symbols = symbols
-            for label, offset in self.symbols.iteritems():
+            for label, offset in self.symbols.items():
                 self.labels[offset] = label
         self.build_opcode_table()
 

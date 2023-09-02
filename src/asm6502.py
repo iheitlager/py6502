@@ -299,7 +299,7 @@ class asm6502():
             if c == "$":
                 newstring = newstring + "0x"
             elif c == "@":
-                newstring = newstring + "0"
+                newstring = newstring + "0o"
             else:
                 newstring = newstring + c
         newstring = newstring + "]"
@@ -345,7 +345,7 @@ class asm6502():
             if c == "$":
                 newstring = newstring + "0x"
             elif c == "@":
-                newstring = newstring + "0"
+                newstring = newstring + "0o"
             else:
                 newstring = newstring + c
         newstring = newstring + "]"
@@ -397,7 +397,7 @@ class asm6502():
             elif theword[0] == '$':
                 value = eval("0x" + theword[1:])
             elif theword[0] == '@':
-                value = eval("0" + theword[1:])
+                value = eval("0o" + theword[1:])
             else:
                 value = eval(theword)
 
@@ -423,7 +423,7 @@ class asm6502():
             if c == "$":
                 newstring = newstring + "0x"
             elif c == "@":
-                newstring = newstring + "0"
+                newstring = newstring + "0o"
             else:
                 newstring = newstring + c
         newstring = newstring + "]"
@@ -1327,7 +1327,7 @@ class asm6502():
 
     def srecord_checksum(self, astring):
         checksum = 0
-        for i in xrange(len(astring) / 2):
+        for i in range(len(astring) // 2):
             hexpair = "0x" + astring[(i * 2):(i * 2) + 2]
             bytevalue = eval(hexpair)
             checksum = checksum + bytevalue
@@ -1489,7 +1489,7 @@ class asm6502():
         # print
         theoutput = list()
 
-        for i in xrange(1024):
+        for i in range(1024):
             addr = 64 * i
 
             # Prepend with an address field, or not if not desired
@@ -1499,7 +1499,7 @@ class asm6502():
                 line = "%04x:" % addr
 
             # add the bytes as hex to the line    
-            for j in xrange(64):
+            for j in range(64):
                 val = self.object_code[(i * 64) + j]
 
                 # Range check the bytes

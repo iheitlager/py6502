@@ -659,7 +659,7 @@ class sim6502(object):
             self.set_c(sum > 100)
 
             sum_1s = sum % 10
-            sum_10s = (sum % 100 - sum_1s)/10
+            sum_10s = (sum % 100 - sum_1s) // 10
             result = sum_10s << 4 + sum_1s
         else:
             result = (self.a + operand + carryin)
@@ -956,7 +956,7 @@ class sim6502(object):
         if self.x:
             result = self.x - 1
         else:
-            results = 0xff
+            result = 0xff
         self.make_flags_nz(result)
         self.x = result
         self.pc += length - 1
@@ -1333,7 +1333,7 @@ class sim6502(object):
             carryout = diff < 0
 
             diff_1s = diff % 10
-            diff_10s = (diff % 100 - diff_1s)/10
+            diff_10s = (diff % 100 - diff_1s) // 10
 
             result = diff_10s * 16 + diff_1s
         else:
