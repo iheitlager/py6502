@@ -325,7 +325,7 @@ class asm6502():
                     newlist.append(g)
                     newlist.append(h)
                 else:
-                    newlist.append(g)
+                    newlist.append(h)
                     newlist.append(g)
                     newlist.append(f)
                     newlist.append(e)
@@ -453,6 +453,10 @@ class asm6502():
             ns = int(s[1:], 2)
             return ns
 
+        if (s[0] == "'"):
+            ns = ord(s[1:-1])
+            return ns
+        
         if (s[0] in self.decimal_digits):
             ns = int(s)
             return ns

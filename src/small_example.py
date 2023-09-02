@@ -7,6 +7,7 @@ thecode = """
         ORG  $100
 start:
         LDA #$10
+        LDA #'A'
         LDX #$00
 loop:
         STA $1000,x
@@ -18,7 +19,7 @@ loop:
 
 lines = thecode.splitlines()
 
-a = asm6502()
+a = asm6502(debug=0)
 (l,s) = a.assemble(lines)
 for line in l:
     print (line)
