@@ -20,5 +20,5 @@ with termbox.Termbox() as tb:
         time.sleep(0.01)  # Remove this delay to make it not fail.
         
 for e in eventdict:
-    print e,":",eventdict[e]
+    print (e,":",eventdict[e])
 

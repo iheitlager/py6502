@@ -222,10 +222,10 @@ def go(debug=0):
     (listingtext,symboltext) = a.assemble(lines)
 
     for line in listingtext:
-        print line
+        print(line)
     print
     for line in symboltext:
-        print line
+        print(line)
 
     a.print_object_code()
 go()

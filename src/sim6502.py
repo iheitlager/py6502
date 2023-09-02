@@ -443,8 +443,8 @@ class sim6502(object):
             operand = operand8
             length = 1
         else:
-            print "ERROR: Address mode %s not found" % addrmode
-            print "     : PC = 0x%04x" % self.pc
+            print ("ERROR: Address mode %s not found" % addrmode)
+            print ("     : PC = 0x%04x" % self.pc)
             exit()
         return (operand, addr, length)
 
@@ -466,8 +466,8 @@ class sim6502(object):
             addr = (self.memory_map.Read(indirectaddr + 1) << 8) + self.memory_map.Read(indirectaddr)
             length = 3
         else:
-            print "ERROR: Address mode %s not found for JMP or JSR" % addrmode
-            print "     : PC = 0x%04x" % self.pc
+            print ("ERROR: Address mode %s not found for JMP or JSR" % addrmode)
+            print ("     : PC = 0x%04x" % self.pc)
             exit()
         operand = self.memory_map.Read(addr)
         return (operand, addr, length)
@@ -528,10 +528,10 @@ class sim6502(object):
         if (self.have_symbols) and (self.pc in self.labels):
             label = self.labels[self.pc]
             label = label.ljust(10)
-            print label + " PC:" + str_pc + " A:" + str_a + " X:" + str_x + " Y:" + str_y + " SP:" + str_sp + " STATUS:" + str_cc
+            print (label + " PC:" + str_pc + " A:" + str_a + " X:" + str_x + " Y:" + str_y + " SP:" + str_sp + " STATUS:" + str_cc)
 
         else:
-            print "           PC:" + str_pc + " A:" + str_a + " X:" + str_x + " Y:" + str_y + " SP:" + str_sp + " STATUS:" + str_cc
+            print ("           PC:" + str_pc + " A:" + str_a + " X:" + str_x + " Y:" + str_y + " SP:" + str_sp + " STATUS:" + str_cc)
 
     # Utility routines to change the flags
     # So you don't need to remember the bit positions

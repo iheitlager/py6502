@@ -272,23 +272,23 @@ end:   bpl vals
     (listing, symbols) = a.assemble(lines)
 
     for line in listing:
-        print line
+        print (line)
     print
     for line in symbols:
-        print line
+        print (line)
     print
 
     object_code = a.object_code[:]
 
     print
     # Output IntelHex
-    print "IntelHex"
+    print ("IntelHex")
     a.print_intelhex()
 
     # Output Srecords
     print
-    print "SRECORDS"
-    a.print_srecords(01, 01, "ModuleName", "Comment")
+    print ("SRECORDS")
+    a.print_srecords(0o01, 0o01, "ModuleName", "Comment")
     print
 
     # Instantiate the simulator
@@ -304,16 +304,15 @@ end:   bpl vals
     s.reset()
 
     print
-    print "SIMULATION START"
+    print ("SIMULATION START")
     print
     # Print a header for the simulator/disassembler output
-    print ("LABEL      " + "ADDR HEX      INSTR").ljust(status_indent) + " PC   A  X  Y  SP   Status"
+    print (("LABEL      " + "ADDR HEX      INSTR").ljust(status_indent) + " PC   A  X  Y  SP   Status")
 
     # Print the initial state
-    print " ".ljust(status_indent) + " %04x %02x %02x %02x %04x %02x" % (s.pc, s.a, s.x, s.y, s.sp, s.cc)
-
+    print (" ".ljust(status_indent) + " %04x %02x %02x %02x %04x %02x" % (s.pc, s.a, s.x, s.y, s.sp, s.cc))
     # Execute 200 instructions
-    for i in xrange(200):
+    for i in range(200):
         # Disassemble the current instruction
         distxt, _ = d.disassemble_line(s.pc)
 
@@ -321,9 +320,9 @@ end:   bpl vals
         s.execute()
 
         # Print out the disassembled instruction followed by the simulator state
-        print distxt.ljust(status_indent) + " %04x %02x %02x %02x %04x %02x" % (s.pc, s.a, s.x, s.y, s.sp, s.cc)
+        print (distxt.ljust(status_indent) + " %04x %02x %02x %02x %04x %02x" % (s.pc, s.a, s.x, s.y, s.sp, s.cc))
 
-    print s.memory_map.Dump()
+    print (s.memory_map.Dump())
 
 if __name__ == "__main__":
     main()
